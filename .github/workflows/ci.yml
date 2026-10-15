@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bridge
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: bridge/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Start TDB community for the live test
+        # A step, not a service container: the CSV it serves comes from the
+        # checkout, which does not exist yet when service containers start.
+        working-directory: .
+        run: |
+          key=$(openssl rand -hex 16)
+          echo "TDB_TEST_KEY=$key" >> "$GITHUB_ENV"
+          docker run -d --name tdb -p 8000:8000 -e TDB_API_KEYS="$key" \
+            -v "$PWD/test-data:/data:ro" ghcr.io/tdb-project/tdb-community:latest
+          for _ in $(seq 30); do curl -sf http://localhost:8000/health && break; sleep 1; done
+          curl -sf -X POST http://localhost:8000/v1/sources \
+            -H "Authorization: Bearer $key" -H "Content-Type: application/json" \
+            -d '{"name":"t","source_type":"csv","connection":{"file_path":"/data/t.csv"}}'
+
+      - name: Test
+        env:
+          TDB_TEST_URL: http://localhost:8000
+        run: npm test
+
+      - name: TDB log
+        if: always()
+        run: docker logs tdb 2>&1 | tail -20

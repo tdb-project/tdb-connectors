@@ -1,0 +1,15 @@
+{
+  "name": "tdb-connectors",
+  "description": "One-step setup of The Data-Bridge (TDB) for Claude Code: governed, audited, read-only SQL over your data.",
+  "owner": {
+    "name": "The Data-Bridge",
+    "url": "https://docs.tdb.jiracorp.co.in"
+  },
+  "plugins": [
+    {
+      "name": "tdb",
+      "source": "./claude-code",
+      "description": "Connect Claude Code to a TDB server: governed, audited, read-only SQL over your data."
+    }
+  ]
+}

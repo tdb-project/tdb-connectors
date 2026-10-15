@@ -46,6 +46,41 @@ jobs:
           TDB_TEST_URL: http://localhost:8000
         run: npm test
 
+      - name: Pack the Claude Desktop extension
+        working-directory: .
+        run: ./scripts/pack-desktop.sh
+
+      - name: Live test against the bridge inside tdb.mcpb
+        env:
+          TDB_TEST_URL: http://localhost:8000
+        run: |
+          mkdir -p /tmp/mcpb && cd /tmp/mcpb && unzip -q "$GITHUB_WORKSPACE/dist/tdb.mcpb"
+          cmp /tmp/mcpb/server/bridge.cjs "$GITHUB_WORKSPACE/bridge/dist/bridge.cjs"
+          cd "$GITHUB_WORKSPACE/bridge"
+          TDB_BRIDGE_PATH=/tmp/mcpb/server/bridge.cjs node --test --test-timeout=60000 out/test/live.test.js
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tdb.mcpb
+          path: dist/tdb.mcpb
+
       - name: TDB log
         if: always()
         run: docker logs tdb 2>&1 | tail -20
+
+  plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: Versions agree
+        run: node scripts/check-versions.mjs
+
+      - name: Claude Code plugin and marketplace validate (strict)
+        run: |
+          npx --yes @anthropic-ai/claude-code@2.1.286 plugin validate --strict ./claude-code
+          npx --yes @anthropic-ai/claude-code@2.1.286 plugin validate --strict .

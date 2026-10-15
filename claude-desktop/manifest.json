@@ -1,0 +1,57 @@
+{
+  "manifest_version": "0.3",
+  "name": "tdb",
+  "display_name": "The Data-Bridge (TDB)",
+  "version": "0.1.0",
+  "description": "Connect Claude to a TDB server: governed, audited, read-only SQL over your data.",
+  "long_description": "Connects Claude Desktop to your self-hosted TDB server. TDB turns your databases and CSVs into governed, read-only SQL that Claude reaches over MCP, and records every call in an audit log you own, naming Claude as the client.\n\nYour API key is kept in your system's secure credential store and sent only to the TDB server you configure. The extension collects no telemetry.",
+  "author": {
+    "name": "The Data-Bridge",
+    "url": "https://docs.tdb.jiracorp.co.in"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tdb-project/tdb-connectors"
+  },
+  "homepage": "https://docs.tdb.jiracorp.co.in/getting-started/ide-setup/",
+  "documentation": "https://docs.tdb.jiracorp.co.in/getting-started/ide-setup/",
+  "support": "https://github.com/tdb-project/tdb-connectors/issues",
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "server/bridge.cjs",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/bridge.cjs"],
+      "env": {
+        "TDB_URL": "${user_config.server_url}",
+        "TDB_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "tools_generated": true,
+  "keywords": ["mcp", "sql", "audit", "data"],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=20.0.0"
+    }
+  },
+  "user_config": {
+    "server_url": {
+      "type": "string",
+      "title": "TDB server URL",
+      "description": "Base URL of your TDB server, for example http://localhost:8000",
+      "default": "http://localhost:8000",
+      "required": true
+    },
+    "api_key": {
+      "type": "string",
+      "title": "TDB API key",
+      "description": "Stored in your system's secure credential store",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

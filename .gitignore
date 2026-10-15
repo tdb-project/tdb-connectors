@@ -2,3 +2,4 @@ node_modules/
 dist/
 out/
 *.mcpb
+claude-desktop/server/

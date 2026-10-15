@@ -1,0 +1,33 @@
+{
+  "name": "tdb",
+  "displayName": "The Data-Bridge (TDB)",
+  "version": "0.1.0",
+  "description": "Connect Claude Code to a TDB server: governed, audited, read-only SQL over your data. Your API key is kept in your system's secure credential store.",
+  "author": {
+    "name": "The Data-Bridge",
+    "url": "https://docs.tdb.jiracorp.co.in"
+  },
+  "homepage": "https://docs.tdb.jiracorp.co.in/getting-started/ide-setup/",
+  "repository": "https://github.com/tdb-project/tdb-connectors",
+  "license": "MIT",
+  "keywords": ["mcp", "sql", "audit", "data"],
+  "icon": "./icon.png",
+  "documentationUrl": "https://docs.tdb.jiracorp.co.in/getting-started/ide-setup/",
+  "supportUrl": "https://github.com/tdb-project/tdb-connectors/issues",
+  "userConfig": {
+    "server_url": {
+      "type": "string",
+      "title": "TDB server URL",
+      "description": "Base URL of your TDB server, for example http://localhost:8000",
+      "required": true,
+      "default": "http://localhost:8000"
+    },
+    "api_key": {
+      "type": "string",
+      "title": "TDB API key",
+      "description": "Stored in your system's secure credential store, never in settings",
+      "required": true,
+      "sensitive": true
+    }
+  }
+}

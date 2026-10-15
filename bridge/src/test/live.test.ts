@@ -8,7 +8,8 @@ import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 // (CI starts the community image); skipped otherwise.
 const url = process.env.TDB_TEST_URL;
 const key = process.env.TDB_TEST_KEY;
-const BRIDGE = fileURLToPath(new URL("../../dist/bridge.cjs", import.meta.url));
+// TDB_BRIDGE_PATH points the test at a packed copy, such as the one inside tdb.mcpb.
+const BRIDGE = process.env.TDB_BRIDGE_PATH ?? fileURLToPath(new URL("../../dist/bridge.cjs", import.meta.url));
 
 test("a real TDB server answers query_source through the bridge", { skip: !url || !key }, async () => {
   const client = new Client({ name: "bridge-live-test", version: "0" });

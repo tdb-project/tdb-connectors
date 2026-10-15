@@ -11,11 +11,11 @@ that AI agents reach over MCP.
 | Folder | What it is | Status |
 |---|---|---|
 | `bridge/` | A small local MCP server that forwards to your TDB server over HTTP, adding your API key | Built and tested |
-| `claude-code/` | A Claude Code plugin: prompts for your server URL and key, stores the key securely | Planned |
-| `claude-desktop/` | A Claude Desktop extension (`.mcpb`) built on the bridge | Planned |
+| `claude-code/` | A Claude Code plugin: asks for your server URL and key, keeps the key out of settings | Built and tested |
+| `claude-desktop/` | A Claude Desktop extension (`.mcpb`) built on the bridge | Built and tested |
 
-Your API key is kept in your operating system's secure credential store and sent only to
-the TDB server you configure. The connectors collect no telemetry. TDB's audit log records
+Your API key is kept in your system's secure credential store (the macOS Keychain; on
+Linux, a file readable only by you) and sent only to the TDB server you configure. The connectors collect no telemetry. TDB's audit log records
 each call with the AI client that made it.
 
 ## License

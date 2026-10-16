@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: bridge/package-lock.json
+
+      - name: Versions agree with the tag
+        run: node scripts/check-versions.mjs
+
+      - name: Build the bridge
+        working-directory: bridge
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+
+      - name: Pack the Claude Desktop extension
+        run: ./scripts/pack-desktop.sh
+
+      - name: GitHub release with tdb.mcpb
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/tdb.mcpb --title "$GITHUB_REF_NAME" --generate-notes

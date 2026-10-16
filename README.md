@@ -9,20 +9,21 @@ that AI agents reach over MCP.
 You need a running TDB server and an API key for it. Start one with the
 [quickstart](https://docs.tdb.jiracorp.co.in/getting-started/quickstart/).
 
-**Claude Code** (2.1.275 or later), in a Claude Code session:
+**Claude Code** 2.1.292 or later, in a terminal:
 
 ```
-/plugin install tdb --marketplace tdb-project/tdb-connectors
+claude plugin install tdb --marketplace tdb-project/tdb-connectors
 ```
 
-On older versions, add the marketplace first:
+On earlier versions, add the marketplace first:
 
 ```
-/plugin marketplace add tdb-project/tdb-connectors
-/plugin install tdb@tdb-connectors
+claude plugin marketplace add tdb-project/tdb-connectors
+claude plugin install tdb@tdb-connectors
 ```
 
-Claude Code asks for your TDB server URL and API key when the plugin is enabled.
+Then run `/plugin configure tdb@tdb-connectors` in Claude Code to enter your TDB server URL
+and API key.
 
 **Claude Desktop:** download `tdb.mcpb` from the
 [latest release](https://github.com/tdb-project/tdb-connectors/releases/latest), open it,

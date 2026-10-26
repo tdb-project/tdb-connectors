@@ -22,12 +22,13 @@ claude plugin marketplace add tdb-project/tdb-connectors
 claude plugin install tdb@tdb-connectors
 ```
 
-Then run `/plugin configure tdb@tdb-connectors` in Claude Code to enter your TDB server URL
-and API key.
+Then, in Claude Code, run `/plugin configure tdb@tdb-connectors` to enter your TDB server URL
+and API key, and `/reload-plugins` to connect. Run `/mcp` to check that `tdb` is connected.
 
 **Claude Desktop:** download `tdb.mcpb` from the
-[latest release](https://github.com/tdb-project/tdb-connectors/releases/latest), open it,
-and enter your server URL and API key when Claude Desktop asks.
+[latest release](https://github.com/tdb-project/tdb-connectors/releases/latest) and open it
+to install. Then enter your server URL and API key in Settings → Extensions → The Data-Bridge
+(TDB).
 
 **VS Code:** use the [TDB extension](https://marketplace.visualstudio.com/items?itemName=tdb-project.tdb-vscode).
 For any other MCP client, connect by hand as described in

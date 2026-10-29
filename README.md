@@ -34,6 +34,15 @@ to install. Then enter your server URL and API key in Settings â†’ Extensions â†
 For any other MCP client, connect by hand as described in
 [IDE setup](https://docs.tdb.jiracorp.co.in/getting-started/ide-setup/).
 
+## Smaller results for the agent
+
+TDB is lean by design: [Lean Mode](https://docs.tdb.jiracorp.co.in/api/mcp/#saving-tokens-lean-mode)
+sends rows as arrays and can trim long text with a marker, about a third fewer tokens on
+a 100-row answer. The connectors have no setting for it, because it is set on the TDB
+server: ask for it in the prompt (*"use lean: true"*), set it on your API key
+(enterprise), or turn it on for everyone with `TDB_LEAN_MODE=on`. Claude Code and Claude
+Desktop pass the result to the model once, so the tokens aren't spent twice.
+
 ## What is here
 
 | Folder | What it is |

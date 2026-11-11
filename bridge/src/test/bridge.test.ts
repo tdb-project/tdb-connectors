@@ -71,7 +71,7 @@ test("sends the key, the negotiated protocol version and the app's name, and no 
     assert.equal(list.headers.authorization, `Bearer ${KEY}`);
     assert.equal(list.headers["mcp-protocol-version"], "2025-11-25");
     assert.equal(list.headers.origin, undefined);
-    assert.equal(list.headers["user-agent"], "bridge-test/0 (via tdb-bridge/0.1.0)");
+    assert.equal(list.headers["user-agent"], "bridge-test/0 (via tdb-bridge/0.1.1)");
     await client.close();
   }));
 

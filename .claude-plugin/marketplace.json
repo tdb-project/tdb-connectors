@@ -3,7 +3,7 @@
   "description": "One-step setup of The Data-Bridge (TDB) for Claude Code: governed, audited, read-only SQL over your data.",
   "owner": {
     "name": "The Data-Bridge",
-    "url": "https://docs.tdb.jiracorp.co.in"
+    "url": "https://docs.tdb.asvanlabs.com"
   },
   "plugins": [
     {

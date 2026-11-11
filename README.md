@@ -1,13 +1,13 @@
 # TDB connectors
 
-One-step setup of [The Data-Bridge (TDB)](https://docs.tdb.jiracorp.co.in) for AI tools
+One-step setup of [The Data-Bridge (TDB)](https://docs.tdb.asvanlabs.com) for AI tools
 beyond VS Code. TDB turns your databases and CSVs into governed, audited, read-only SQL
 that AI agents reach over MCP.
 
 ## Install
 
 You need a running TDB server and an API key for it. Start one with the
-[quickstart](https://docs.tdb.jiracorp.co.in/getting-started/quickstart/).
+[quickstart](https://docs.tdb.asvanlabs.com/getting-started/quickstart/).
 
 **Claude Code** 2.1.292 or later, in a terminal:
 
@@ -32,11 +32,11 @@ to install. Then enter your server URL and API key in Settings â†’ Extensions â†
 
 **VS Code:** use the [TDB extension](https://marketplace.visualstudio.com/items?itemName=tdb-project.tdb-vscode).
 For any other MCP client, connect by hand as described in
-[IDE setup](https://docs.tdb.jiracorp.co.in/getting-started/ide-setup/).
+[IDE setup](https://docs.tdb.asvanlabs.com/getting-started/ide-setup/).
 
 ## Smaller results for the agent
 
-TDB is lean by design: [Lean Mode](https://docs.tdb.jiracorp.co.in/api/mcp/#saving-tokens-lean-mode)
+TDB is lean by design: [Lean Mode](https://docs.tdb.asvanlabs.com/api/mcp/#saving-tokens-lean-mode)
 sends rows as arrays and can trim long text with a marker, about a third fewer tokens on
 a 100-row answer. The connectors have no setting for it, because it is set on the TDB
 server: ask for it in the prompt (*"use lean: true"*), set it on your API key

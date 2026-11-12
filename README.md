@@ -30,6 +30,11 @@ and API key, and `/reload-plugins` to connect. Run `/mcp` to check that `tdb` is
 to install. Then enter your server URL and API key in Settings → Extensions → The Data-Bridge
 (TDB).
 
+With TDB Enterprise at a public HTTPS address, claude.ai and Claude Desktop can instead add
+it as a custom connector and sign in through TDB, with no extension or API key (tested
+2026-11-12): see [Connecting Claude Desktop](https://docs.tdb.asvanlabs.com/auth/oauth/#connecting-claude-desktop).
+The extension is the way for a server on your own machine or private network.
+
 **VS Code:** use the [TDB extension](https://marketplace.visualstudio.com/items?itemName=tdb-project.tdb-vscode).
 For any other MCP client, connect by hand as described in
 [IDE setup](https://docs.tdb.asvanlabs.com/getting-started/ide-setup/).

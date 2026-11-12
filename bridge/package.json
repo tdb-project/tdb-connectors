@@ -1,6 +1,6 @@
 {
   "name": "@tdb-project/mcp-bridge",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "stdio MCP server that forwards to a TDB server's Streamable HTTP endpoint",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "test": "node --test --test-timeout=60000 \"out/test/*.test.js\""
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.31.0"
+    "@modelcontextprotocol/sdk": "1.32.2"
   },
   "devDependencies": {
     "@types/node": "22.20.4",

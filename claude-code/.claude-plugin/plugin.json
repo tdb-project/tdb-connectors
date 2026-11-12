@@ -1,7 +1,7 @@
 {
   "name": "tdb",
   "displayName": "The Data-Bridge (TDB)",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Connect Claude Code to a TDB server: governed, audited, read-only SQL over your data. Your API key is kept in your system's secure credential store.",
   "author": {
     "name": "The Data-Bridge",

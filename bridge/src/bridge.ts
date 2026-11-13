@@ -4,7 +4,7 @@ import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CallToolRequestSchema, ErrorCode, ListToolsRequestSchema, McpError } from "@modelcontextprotocol/sdk/types.js";
 
-const VERSION = "0.1.2";
+const VERSION = "0.1.3";
 
 // stdout carries the MCP protocol, so every human-readable line goes to stderr.
 function log(message: string): void {
@@ -44,7 +44,7 @@ async function main(): Promise<void> {
 
   // TDB's audit log names the client from the User-Agent on handshake-era calls,
   // so the bridge connects only once the app in front of it has said who it is,
-  // and passes that on: "<app name>/<app version> (via tdb-bridge/0.1.2)". Claude Desktop
+  // and passes that on: "<app name>/<app version> (via tdb-bridge/0.1.3)". Claude Desktop
   // on Windows reports "local-agent-mode-The Data-Bridge (TDB)/1.0.0", not its own name.
   let upstream: Promise<Client> | undefined;
   const connectUpstream = async (): Promise<Client> => {

@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "tdb",
   "display_name": "The Data-Bridge (TDB)",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Connect Claude to a TDB server: governed, audited, read-only SQL over your data.",
   "long_description": "Connects Claude Desktop to your self-hosted TDB server. TDB turns your databases and CSVs into governed, read-only SQL that Claude reaches over MCP, and records every call in an audit log you own, naming Claude as the client.\n\nYour API key is kept in your system's secure credential store and sent only to the TDB server you configure. The extension collects no telemetry.",
   "author": {

@@ -1,6 +1,6 @@
 {
   "name": "@tdb-project/mcp-bridge",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "description": "stdio MCP server that forwards to a TDB server's Streamable HTTP endpoint",
   "license": "MIT",
